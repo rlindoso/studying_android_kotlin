@@ -1,13 +1,12 @@
-package com.rlindoso.motivation
+package com.rlindoso.motivation.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.rlindoso.motivation.R
 
-class SplashActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
-
-        supportActionBar?.hide()
+        setContentView(R.layout.activity_main)
     }
 }
