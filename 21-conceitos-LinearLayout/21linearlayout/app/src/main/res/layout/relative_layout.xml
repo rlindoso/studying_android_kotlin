@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/firstTextTeste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="#192DAF"
+        android:padding="32dp"
+        android:text="TESTE"
+        android:textColor="#fff" />
+
+    <TextView
+        android:id="@+id/secondTextTeste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        android:background="#192DAF"
+        android:padding="32dp"
+        android:text="TESTE"
+        android:textColor="#fff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:background="#192DAF"
+        android:padding="32dp"
+        android:text="TESTE"
+        android:textColor="#fff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:background="#192DAF"
+        android:padding="32dp"
+        android:text="TESTE"
+        android:textColor="#fff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="16dp"
+        android:background="#192DAF"
+        android:padding="32dp"
+        android:text="TESTE"
+        android:textColor="#fff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="16dp"
+        android:background="#192DAF"
+        android:padding="32dp"
+        android:text="TESTE"
+        android:textColor="#fff" />
+
+    <TextView
+        android:id="@+id/textTeste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="16dp"
+        android:background="#192DAF"
+        android:padding="32dp"
+        android:text="TESTE"
+        android:textColor="#fff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textTeste"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        android:background="#192DAF"
+        android:padding="32dp"
+        android:text="TESTE"
+        android:textColor="#fff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textTeste"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        android:background="#192DAF"
+        android:padding="32dp"
+        android:text="TESTE"
+        android:textColor="#fff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_toStartOf="@+id/secondTextTeste"
+        android:layout_toEndOf="@+id/firstTextTeste"
+        android:background="#192DAF"
+        android:padding="32dp"
+        android:text="TESTE"
+        android:textAlignment="center"
+        android:textColor="#fff" />
+
+
+</RelativeLayout>
