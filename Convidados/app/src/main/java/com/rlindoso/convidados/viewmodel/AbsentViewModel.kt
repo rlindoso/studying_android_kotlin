@@ -1,4 +1,4 @@
-package com.rlindoso.convidados.ui.slideshow
+package com.rlindoso.convidados.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
