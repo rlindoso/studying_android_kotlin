@@ -17,8 +17,8 @@ class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_guest_form)
         mBinding = ActivityGuestFormBinding.inflate(layoutInflater)
+        setContentView(mBinding.root)
 
         mViewModel = ViewModelProvider(this).get(GuestFormViewModel::class.java)
 
@@ -45,6 +45,7 @@ class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
             } else {
                 Toast.makeText(applicationContext, "Falha", Toast.LENGTH_SHORT).show()
             }
+            finish()
         })
     }
 
