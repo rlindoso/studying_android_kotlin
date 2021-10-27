@@ -1,7 +1,10 @@
 package com.rlindoso.convidados.service.repository
 
+import android.content.ContentValues
 import android.content.Context
+import com.rlindoso.convidados.service.constants.DataBaseConstants
 import com.rlindoso.convidados.service.model.GuestModel
+import java.lang.Exception
 
 class GuestRepository private constructor(context: Context) {
 
@@ -35,8 +38,20 @@ class GuestRepository private constructor(context: Context) {
 
     // CRUD - Create, Read, Update, Delete
 
-    fun save(guest: GuestModel) {
-        //mGuestDataBaseHelper.writableDatabase
+    fun save(guest: GuestModel): Boolean {
+        return try {
+            val db = mGuestDataBaseHelper.writableDatabase
+
+            val contentValues = ContentValues()
+            contentValues.put(DataBaseConstants.GUEST.COLUMNS.NAME, guest.name)
+            contentValues.put(DataBaseConstants.GUEST.COLUMNS.PRESENCE, guest.presence)
+
+            db.insert(DataBaseConstants.GUEST.TABLE_NAME, null, contentValues)
+
+            true
+        } catch (e: Exception) {
+            false
+        }
     }
 
     fun update(guest: GuestModel) {
