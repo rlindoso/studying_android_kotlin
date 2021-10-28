@@ -1,20 +1,26 @@
 package com.rlindoso.convidados.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.rlindoso.convidados.databinding.FragmentAbsentBinding
-import com.rlindoso.convidados.viewmodel.AbsentViewModel
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.rlindoso.convidados.databinding.FragmentAllBinding
+import com.rlindoso.convidados.service.constants.GuestConstants
+import com.rlindoso.convidados.view.adapter.GuestAdapter
+import com.rlindoso.convidados.view.listener.GuestListener
+import com.rlindoso.convidados.viewmodel.GuestsViewModel
 
 class AbsentFragment : Fragment() {
 
-    private lateinit var absentViewModel: AbsentViewModel
-    private var _binding: FragmentAbsentBinding? = null
+    private lateinit var mViewModel: GuestsViewModel
+    private var _binding: FragmentAllBinding? = null
+
+    private val mAdapter = GuestAdapter()
+    private lateinit var mListener: GuestListener
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -25,17 +31,55 @@ class AbsentFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        absentViewModel =
-            ViewModelProvider(this).get(AbsentViewModel::class.java)
+        mViewModel =
+            ViewModelProvider(this).get(GuestsViewModel::class.java)
 
-        _binding = FragmentAbsentBinding.inflate(inflater, container, false)
+        _binding = FragmentAllBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textSlideshow
-        absentViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+        // RecyclerView
+        // 1 - Obter a recycler
+        val recycler = binding.recyclerAllGuests
+
+        // 2 - Definir um layout
+        recycler.layoutManager = LinearLayoutManager(context)
+
+        // 3 - Definir um adapter
+        recycler.adapter = mAdapter
+
+        mListener = object : GuestListener {
+            override fun onClick(id: Int) {
+                val intent = Intent(context, GuestFormActivity::class.java)
+
+                val bundle = Bundle()
+                bundle.putInt(GuestConstants.GUESTID, id)
+
+                intent.putExtras(bundle)
+                startActivity(intent)
+            }
+
+            override fun onDelete(id: Int) {
+                mViewModel.delete(id)
+                mViewModel.load(GuestConstants.FILTER.ABSENT)
+            }
+        }
+
+        mAdapter.attachListener(mListener)
+        observer()
+        mViewModel.load(GuestConstants.FILTER.ABSENT)
+
         return root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mViewModel.load(GuestConstants.FILTER.ABSENT)
+    }
+
+    private fun observer() {
+        mViewModel.guestList.observe(viewLifecycleOwner, {
+            mAdapter.updateGuests(it)
+        })
     }
 
     override fun onDestroyView() {
