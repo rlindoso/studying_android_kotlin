@@ -24,7 +24,7 @@ class GuestViewHolder(itemView: View, private val listener: GuestListener): Recy
                 .setTitle(R.string.remocao_convidado)
                 .setMessage(R.string.deseja_remover)
                 .setPositiveButton(R.string.remover) {_, _ ->
-                    listener.onDelete(guest.id)
+                    listener.onDelete(guest)
                 }
                 .setNeutralButton(R.string.cancelar, null)
                 .show()

@@ -11,24 +11,28 @@ import com.rlindoso.convidados.service.repository.GuestRepository
 
 class GuestsViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val mGuestRepository = GuestRepository.getInstance(application.applicationContext)
+    private val mGuestRepository = GuestRepository(application.applicationContext)
 
     private val mGuestList = MutableLiveData<List<GuestModel>>()
     val guestList: LiveData<List<GuestModel>> = mGuestList
 
     fun load(filter: Int) {
 
-        if (filter == GuestConstants.FILTER.EMPTY) {
-            mGuestList.value = mGuestRepository.getAll()
-        } else if (filter == GuestConstants.FILTER.PRESENT) {
-            mGuestList.value = mGuestRepository.getPresent()
-        } else {
-            mGuestList.value = mGuestRepository.getAbsent()
+        when (filter) {
+            GuestConstants.FILTER.EMPTY -> {
+                mGuestList.value = mGuestRepository.getAll()
+            }
+            GuestConstants.FILTER.PRESENT -> {
+                mGuestList.value = mGuestRepository.getPresent()
+            }
+            else -> {
+                mGuestList.value = mGuestRepository.getAbsent()
+            }
         }
 
     }
 
-    fun delete(id: Int) {
-        mGuestRepository.delete(id)
+    fun delete(guest: GuestModel) {
+        mGuestRepository.delete(guest)
     }
 }

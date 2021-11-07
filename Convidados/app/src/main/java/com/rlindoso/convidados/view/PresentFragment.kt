@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.rlindoso.convidados.databinding.FragmentAllBinding
 import com.rlindoso.convidados.databinding.FragmentPresentBinding
 import com.rlindoso.convidados.service.constants.GuestConstants
+import com.rlindoso.convidados.service.model.GuestModel
 import com.rlindoso.convidados.view.adapter.GuestAdapter
 import com.rlindoso.convidados.view.listener.GuestListener
 import com.rlindoso.convidados.viewmodel.GuestsViewModel
@@ -59,8 +60,8 @@ class PresentFragment : Fragment() {
                 startActivity(intent)
             }
 
-            override fun onDelete(id: Int) {
-                mViewModel.delete(id)
+            override fun onDelete(guest: GuestModel) {
+                mViewModel.delete(guest)
                 mViewModel.load(GuestConstants.FILTER.PRESENT)
             }
         }
