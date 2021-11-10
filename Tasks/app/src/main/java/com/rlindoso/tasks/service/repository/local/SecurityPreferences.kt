@@ -1,4 +1,4 @@
-package com.rlindoso.tasks.service.repository
+package com.rlindoso.tasks.service.repository.local
 
 import android.content.Context
 import android.content.SharedPreferences
